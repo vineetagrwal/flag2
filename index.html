@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complete World Flag Quiz</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -20,7 +15,6 @@
             justify-content: center;
             padding: 20px;
         }
-
         .quiz-container {
             background: white;
             border-radius: 20px;
@@ -30,7 +24,6 @@
             width: 100%;
             text-align: center;
         }
-
         .quiz-title {
             color: #333;
             font-size: 2.5em;
@@ -40,49 +33,26 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .progress-info {
             margin-bottom: 20px;
             padding: 15px;
             background: #f8f9fa;
             border-radius: 10px;
         }
-
-        .global-progress {
-            font-size: 1.1em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .quiz-number {
-            font-size: 1em;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
+        .global-progress { font-size: 1.1em; color: #333; margin-bottom: 10px; }
+        .quiz-number { font-size: 1em; color: #666; margin-bottom: 15px; }
         .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
+            width: 100%; height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden;
         }
-
         .progress-fill {
             height: 100%;
             background: linear-gradient(135deg, #667eea, #764ba2);
             transition: width 0.3s ease;
             width: 0%;
         }
-
         .mode-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+            display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;
         }
-
         .mode-btn {
             padding: 8px 16px;
             border: 2px solid #667eea;
@@ -94,18 +64,8 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-
-        .mode-btn.active {
-            background: #667eea;
-            color: white;
-        }
-
-        .score {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
+        .mode-btn.active { background: #667eea; color: white; }
+        .score { font-size: 1.2em; color: #666; margin-bottom: 20px; }
         .flag-emoji {
             font-size: 8em;
             line-height: 1;
@@ -113,7 +73,6 @@
             display: block;
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
         .country-info {
             background: #f8f9fa;
             border-radius: 10px;
@@ -121,34 +80,16 @@
             margin-bottom: 20px;
             display: none;
         }
-
-        .country-info.show {
-            display: block;
-        }
-
-        .info-item {
-            margin-bottom: 8px;
-            font-size: 1.1em;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: #667eea;
-        }
-
-        .question {
-            font-size: 1.3em;
-            color: #333;
-            margin-bottom: 25px;
-        }
-
+        .country-info.show { display: block; }
+        .info-item { margin-bottom: 8px; font-size: 1.1em; }
+        .info-label { font-weight: 600; color: #667eea; }
+        .question { font-size: 1.3em; color: #333; margin-bottom: 25px; }
         .options {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-bottom: 25px;
         }
-
         .option {
             background: #f8f9fa;
             border: 2px solid #e9ecef;
@@ -159,31 +100,26 @@
             font-size: 1.1em;
             font-weight: 500;
         }
-
         .option:hover {
             background: #e9ecef;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
         .option.selected {
             background: #667eea;
             color: white;
             border-color: #667eea;
         }
-
         .option.correct {
             background: #28a745;
             border-color: #28a745;
             color: white;
         }
-
         .option.incorrect {
             background: #dc3545;
             border-color: #dc3545;
             color: white;
         }
-
         .btn {
             padding: 12px 24px;
             border: none;
@@ -194,22 +130,18 @@
             transition: all 0.3s ease;
             margin: 5px;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
         }
-
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
         }
-
         .btn-secondary {
             background: #6c757d;
             color: white;
         }
-
         .feedback {
             margin: 20px 0;
             padding: 15px;
@@ -220,17 +152,14 @@
             align-items: center;
             justify-content: center;
         }
-
         .feedback.correct {
             background: #d4edda;
             color: #155724;
         }
-
         .feedback.incorrect {
             background: #f8d7da;
             color: #721c24;
         }
-
         .completion-banner {
             background: linear-gradient(135deg, #28a745, #20c997);
             color: white;
@@ -239,34 +168,18 @@
             margin-bottom: 20px;
             display: none;
         }
-
-        .completion-banner.show {
-            display: block;
-        }
-
+        .completion-banner.show { display: block; }
         @media (max-width: 600px) {
-            .quiz-container {
-                padding: 20px;
-            }
-            
-            .quiz-title {
-                font-size: 2em;
-            }
-            
-            .options {
-                grid-template-columns: 1fr;
-            }
-            
-            .flag-emoji {
-                font-size: 6em;
-            }
+            .quiz-container { padding: 20px; }
+            .quiz-title { font-size: 2em; }
+            .options { grid-template-columns: 1fr; }
+            .flag-emoji { font-size: 6em; }
         }
     </style>
 </head>
 <body>
     <div class="quiz-container">
         <h1 class="quiz-title">🌍 Complete World Flag Quiz</h1>
-        
         <div class="progress-info">
             <div class="global-progress" id="global-progress">Countries Learned: 0 / 195</div>
             <div class="quiz-number" id="quiz-number">Ready to start Quiz #1</div>
@@ -274,48 +187,31 @@
                 <div class="progress-fill" id="global-progress-fill"></div>
             </div>
         </div>
-
         <div class="completion-banner" id="completion-banner">
             <h2>🎉 Congratulations! 🎉</h2>
             <p>You've mastered all 195 countries of the world!</p>
         </div>
-        
         <div class="mode-buttons">
             <button class="mode-btn active" data-mode="country">Country Name</button>
             <button class="mode-btn" data-mode="capital">Capital City</button>
             <button class="mode-btn" data-mode="continent">Continent</button>
         </div>
-
         <div class="score">Current Quiz Score: <span id="current-score">0</span> / <span id="total-questions">10</span></div>
-
         <div class="flag-emoji" id="flag-emoji">🏁</div>
-        
         <div class="country-info" id="country-info">
-            <div class="info-item">
-                <span class="info-label">Country:</span> <span id="country-name">-</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Capital:</span> <span id="capital-name">-</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Continent:</span> <span id="continent-name">-</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Population:</span> <span id="population">-</span>
-            </div>
+            <div class="info-item"><span class="info-label">Country:</span> <span id="country-name">-</span></div>
+            <div class="info-item"><span class="info-label">Capital:</span> <span id="capital-name">-</span></div>
+            <div class="info-item"><span class="info-label">Continent:</span> <span id="continent-name">-</span></div>
+            <div class="info-item"><span class="info-label">Population:</span> <span id="population">-</span></div>
         </div>
-
         <div class="question" id="question">Click "Start Quiz" to begin learning about world countries!</div>
-
         <div class="options" id="options" style="display: none;">
             <div class="option" data-option="0"></div>
             <div class="option" data-option="1"></div>
             <div class="option" data-option="2"></div>
             <div class="option" data-option="3"></div>
         </div>
-
         <div class="feedback" id="feedback" style="display: none;"></div>
-
         <div class="controls">
             <button class="btn btn-primary" id="start-btn">Start Quiz #1</button>
             <button class="btn btn-primary" id="next-btn" style="display: none;">Next Question</button>
@@ -323,9 +219,9 @@
             <button class="btn btn-secondary" id="reset-btn" style="display: none;">Reset Progress</button>
         </div>
     </div>
-
     <script>
-        // All 195 countries complete list
+        // Countries array
+ // All 195 countries complete list
         const allCountries = [
             // Africa (54)
             {name: "Algeria", capital: "Algiers", continent: "Africa", flag: "🇩🇿", population: "44M"},
@@ -534,289 +430,262 @@
             {name: "Uruguay", capital: "Montevideo", continent: "South America", flag: "🇺🇾", population: "3.5M"},
             {name: "Venezuela", capital: "Caracas", continent: "South America", flag: "🇻🇪", population: "28M"}
         ];
+        
+        let globalProgress = { learnedCountries: [], currentQuiz: 1 };
 
-        // Global progress tracking with localStorage
-        let globalProgress = {
-            learnedCountries: [],
-            currentQuiz: 1
-        };
-
-        // Load saved progress
-        try {
-            const saved = localStorage.getItem('flagQuizProgress');
-            if (saved) {
-                globalProgress = JSON.parse(saved);
-            }
-        } catch (e) {
-            console.log('localStorage not available, using session storage');
+        function loadProgress() {
+            try {
+                const saved = localStorage.getItem('flagQuizProgress');
+                if (saved) {
+                    globalProgress = JSON.parse(saved);
+                }
+            } catch (e) {}
         }
-
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let currentCountry = null;
-        let selectedAnswer = null;
-        let quizMode = 'country';
-        let currentQuizCountries = [];
-
-        const elements = {
-            flagEmoji: document.getElementById('flag-emoji'),
-            countryInfo: document.getElementById('country-info'),
-            countryName: document.getElementById('country-name'),
-            capitalName: document.getElementById('capital-name'),
-            continentName: document.getElementById('continent-name'),
-            population: document.getElementById('population'),
-            question: document.getElementById('question'),
-            options: document.getElementById('options'),
-            feedback: document.getElementById('feedback'),
-            startBtn: document.getElementById('start-btn'),
-            nextBtn: document.getElementById('next-btn'),
-            nextQuizBtn: document.getElementById('next-quiz-btn'),
-            resetBtn: document.getElementById('reset-btn'),
-            currentScore: document.getElementById('current-score'),
-            totalQuestions: document.getElementById('total-questions'),
-            globalProgress: document.getElementById('global-progress'),
-            quizNumber: document.getElementById('quiz-number'),
-            globalProgressFill: document.getElementById('global-progress-fill'),
-            completionBanner: document.getElementById('completion-banner')
-        };
-
         function saveProgress() {
             try {
                 localStorage.setItem('flagQuizProgress', JSON.stringify(globalProgress));
-            } catch (e) {
-                console.log('Could not save to localStorage');
-            }
+            } catch (e) {}
         }
 
-        function updateGlobalProgress() {
-            const learned = globalProgress.learnedCountries.length;
-            const total = allCountries.length;
-            const percentage = (learned / total) * 100;
-            
-            elements.globalProgress.textContent = `Countries Learned: ${learned} / ${total}`;
-            elements.globalProgressFill.style.width = percentage + '%';
-            
-            if (learned === total) {
-                elements.quizNumber.textContent = "🎉 All countries learned!";
-                elements.completionBanner.classList.add('show');
-            } else {
-                elements.quizNumber.textContent = `Quiz #${globalProgress.currentQuiz} - Learn 10 new countries`;
-                elements.completionBanner.classList.remove('show');
+        let currentQuestionIndex = 0, score = 0, currentCountry = null, selectedAnswer = null, quizMode = 'country', currentQuizCountries = [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProgress();
+
+            const elements = {
+                flagEmoji: document.getElementById('flag-emoji'),
+                countryInfo: document.getElementById('country-info'),
+                countryName: document.getElementById('country-name'),
+                capitalName: document.getElementById('capital-name'),
+                continentName: document.getElementById('continent-name'),
+                population: document.getElementById('population'),
+                question: document.getElementById('question'),
+                options: document.getElementById('options'),
+                feedback: document.getElementById('feedback'),
+                startBtn: document.getElementById('start-btn'),
+                nextBtn: document.getElementById('next-btn'),
+                nextQuizBtn: document.getElementById('next-quiz-btn'),
+                resetBtn: document.getElementById('reset-btn'),
+                currentScore: document.getElementById('current-score'),
+                totalQuestions: document.getElementById('total-questions'),
+                globalProgress: document.getElementById('global-progress'),
+                quizNumber: document.getElementById('quiz-number'),
+                globalProgressFill: document.getElementById('global-progress-fill'),
+                completionBanner: document.getElementById('completion-banner')
+            };
+
+            // UI update helpers
+            function updateProgress() {
+                elements.globalProgress.innerText = `Countries Learned: ${globalProgress.learnedCountries.length} / 195`;
+                let percent = globalProgress.learnedCountries.length / 195 * 100;
+                elements.globalProgressFill.style.width = percent + "%";
+                if (globalProgress.learnedCountries.length === 195) {
+                    elements.completionBanner.classList.add('show');
+                } else {
+                    elements.completionBanner.classList.remove('show');
+                }
             }
-        }
-
-        function getUnlearnedCountries() {
-            return allCountries.filter(country => 
-                !globalProgress.learnedCountries.some(learned => learned.name === country.name)
-            );
-        }
-
-        function getSimilarCountries(targetCountry, count = 3) {
-            // First try same continent
-            const sameContinent = allCountries.filter(c => 
-                c !== targetCountry && 
-                c.continent === targetCountry.continent
-            );
-            
-            if (sameContinent.length >= count) {
-                return sameContinent.sort(() => Math.random() - 0.5).slice(0, count);
-            }
-            
-            // If not enough, use any countries
-            const others = allCountries.filter(c => c !== targetCountry);
-            return others.sort(() => Math.random() - 0.5).slice(0, count);
-        }
-
-        function generateQuestion() {
-            if (currentQuestionIndex >= 10) {
-                endQuiz();
-                return;
+            function updateQuizNumber() {
+                elements.quizNumber.innerText = `Quiz #${globalProgress.currentQuiz}`;
             }
 
-            if (currentQuizCountries.length === 0) {
-                const unlearned = getUnlearnedCountries();
-                if (unlearned.length === 0) {
-                    showCompletionMessage();
+            function showCountryInfo(country) {
+                elements.countryInfo.classList.add('show');
+                elements.countryName.innerText = country.name;
+                elements.capitalName.innerText = country.capital;
+                elements.continentName.innerText = country.continent;
+                elements.population.innerText = country.population;
+            }
+
+            function hideCountryInfo() {
+                elements.countryInfo.classList.remove('show');
+            }
+
+            function resetQuizState() {
+                currentQuestionIndex = 0;
+                score = 0;
+                selectedAnswer = null;
+                elements.currentScore.innerText = score;
+                elements.totalQuestions.innerText = "10";
+                elements.feedback.style.display = "none";
+                hideCountryInfo();
+            }
+
+            function getRandomCountries(exclude = [], count = 10) {
+                let pool = allCountries.filter(c => !exclude.includes(c.name));
+                let arr = [];
+                while (arr.length < count && pool.length > 0) {
+                    let idx = Math.floor(Math.random() * pool.length);
+                    arr.push(pool[idx]);
+                    pool.splice(idx, 1);
+                }
+                return arr;
+            }
+
+            function generateOptions(correctCountry) {
+                let options = [correctCountry];
+                let incorrect = allCountries.filter(c => c.name !== correctCountry.name);
+                while (options.length < 4) {
+                    let idx = Math.floor(Math.random() * incorrect.length);
+                    options.push(incorrect[idx]);
+                    incorrect.splice(idx, 1);
+                }
+                // Shuffle
+                for (let i = options.length - 1; i > 0; i--) {
+                    let j = Math.floor(Math.random() * (i + 1));
+                    [options[i], options[j]] = [options[j], options[i]];
+                }
+                return options;
+            }
+
+            function renderQuestion() {
+                let country = currentQuizCountries[currentQuestionIndex];
+                currentCountry = country;
+                elements.flagEmoji.innerText = country.flag;
+                let questionText = "";
+                let optionsList = [];
+                if (quizMode === 'country') {
+                    questionText = `Which country does this flag belong to?`;
+                    optionsList = generateOptions(country).map(c => c.name);
+                } else if (quizMode === 'capital') {
+                    questionText = `Which is the capital city of ${country.name}?`;
+                    optionsList = generateOptions(country).map(c => c.capital);
+                } else if (quizMode === 'continent') {
+                    questionText = `Which continent is ${country.name} in?`;
+                    optionsList = generateOptions(country).map(c => c.continent);
+                }
+                elements.question.innerText = questionText;
+                elements.options.style.display = "grid";
+                Array.from(elements.options.children).forEach((opt, i) => {
+                    opt.innerText = optionsList[i] || "";
+                    opt.className = "option";
+                });
+                selectedAnswer = null;
+                elements.nextBtn.style.display = "none";
+                elements.feedback.style.display = "none";
+            }
+
+            function handleAnswer(optionIdx) {
+                if (selectedAnswer !== null) return; // already answered
+                selectedAnswer = optionIdx;
+                let optElems = Array.from(elements.options.children);
+                let correctIdx = 0;
+                let correctText = "";
+                if (quizMode === 'country') {
+                    correctText = currentCountry.name;
+                } else if (quizMode === 'capital') {
+                    correctText = currentCountry.capital;
+                } else if (quizMode === 'continent') {
+                    correctText = currentCountry.continent;
+                }
+                optElems.forEach((opt, i) => {
+                    if (opt.innerText === correctText) correctIdx = i;
+                });
+                optElems.forEach((opt, i) => {
+                    opt.classList.remove('selected');
+                    if (i === correctIdx) opt.classList.add('correct');
+                    else if (i === optionIdx) opt.classList.add('incorrect');
+                });
+                let correct = optionIdx === correctIdx;
+                if (correct) {
+                    elements.feedback.innerText = "Correct!";
+                    elements.feedback.className = "feedback correct";
+                    score++;
+                    elements.currentScore.innerText = score;
+                    if (!globalProgress.learnedCountries.includes(currentCountry.name)) {
+                        globalProgress.learnedCountries.push(currentCountry.name);
+                        saveProgress();
+                        updateProgress();
+                    }
+                } else {
+                    elements.feedback.innerText = "Incorrect!";
+                    elements.feedback.className = "feedback incorrect";
+                }
+                elements.feedback.style.display = "flex";
+                showCountryInfo(currentCountry);
+                elements.nextBtn.style.display = "inline-block";
+            }
+
+            function nextQuestion() {
+                hideCountryInfo();
+                elements.feedback.style.display = "none";
+                selectedAnswer = null;
+                currentQuestionIndex++;
+                if (currentQuestionIndex < currentQuizCountries.length) {
+                    renderQuestion();
+                } else {
+                    elements.options.style.display = "none";
+                    elements.flagEmoji.innerText = "🎉";
+                    elements.question.innerText = `Quiz Complete! Your score: ${score} / ${currentQuizCountries.length}`;
+                    elements.nextQuizBtn.style.display = "inline-block";
+                    elements.resetBtn.style.display = "inline-block";
+                }
+            }
+
+            function startQuiz() {
+                resetQuizState();
+                updateQuizNumber();
+                // Exclude learned countries for next quiz
+                let exclude = globalProgress.learnedCountries || [];
+                currentQuizCountries = getRandomCountries(exclude, 10);
+                if (currentQuizCountries.length === 0) {
+                    elements.question.innerText = "You've learned all countries!";
+                    elements.flagEmoji.innerText = "🎉";
+                    elements.options.style.display = "none";
+                    elements.nextQuizBtn.style.display = "none";
                     return;
                 }
-                currentQuizCountries = unlearned.slice(0, 10);
+                renderQuestion();
+                elements.startBtn.style.display = "none";
+                elements.nextBtn.style.display = "none";
+                elements.nextQuizBtn.style.display = "none";
+                elements.resetBtn.style.display = "inline-block";
             }
 
-            currentCountry = currentQuizCountries[currentQuestionIndex];
-            
-            elements.flagEmoji.textContent = currentCountry.flag;
-            elements.countryInfo.classList.remove('show');
-
-            const incorrectOptions = getSimilarCountries(currentCountry, 3);
-            const allOptions = [currentCountry, ...incorrectOptions].sort(() => Math.random() - 0.5);
-
-            let questionText = '';
-            let correctAnswer = '';
-
-            switch (quizMode) {
-                case 'country':
-                    questionText = 'Which country does this flag belong to?';
-                    correctAnswer = currentCountry.name;
-                    break;
-                case 'capital':
-                    questionText = 'What is the capital city of this country?';
-                    correctAnswer = currentCountry.capital;
-                    break;
-                case 'continent':
-                    questionText = 'Which continent is this country located in?';
-                    correctAnswer = currentCountry.continent;
-                    break;
-            }
-
-            elements.question.textContent = questionText;
-
-            const optionElements = elements.options.querySelectorAll('.option');
-            optionElements.forEach((option, index) => {
-                option.className = 'option';
-                let optionText = '';
-                
-                switch (quizMode) {
-                    case 'country':
-                        optionText = allOptions[index].name;
-                        break;
-                    case 'capital':
-                        optionText = allOptions[index].capital;
-                        break;
-                    case 'continent':
-                        optionText = allOptions[index].continent;
-                        break;
-                }
-                
-                option.textContent = optionText;
-                option.dataset.correct = (optionText === correctAnswer).toString();
-            });
-
-            selectedAnswer = null;
-            elements.options.style.display = 'grid';
-            elements.feedback.style.display = 'none';
-            elements.nextBtn.style.display = 'none';
-
-            currentQuestionIndex++;
-        }
-
-        function selectOption(optionElement) {
-            if (selectedAnswer !== null) return;
-
-            selectedAnswer = optionElement;
-            optionElement.classList.add('selected');
-
-            const optionElements = elements.options.querySelectorAll('.option');
-            optionElements.forEach(option => {
-                if (option.dataset.correct === 'true') {
-                    option.classList.add('correct');
-                } else if (option === optionElement && option.dataset.correct === 'false') {
-                    option.classList.add('incorrect');
-                }
-            });
-
-            const isCorrect = optionElement.dataset.correct === 'true';
-            if (isCorrect) {
-                score++;
-                elements.feedback.textContent = '✓ Correct! Well done!';
-                elements.feedback.className = 'feedback correct';
-            } else {
-                const correctOption = [...optionElements].find(opt => opt.dataset.correct === 'true');
-                elements.feedback.textContent = `✗ Incorrect. The correct answer is: ${correctOption.textContent}`;
-                elements.feedback.className = 'feedback incorrect';
-            }
-
-            elements.feedback.style.display = 'flex';
-            elements.currentScore.textContent = score;
-
-            // Show country info
-            elements.countryName.textContent = currentCountry.name;
-            elements.capitalName.textContent = currentCountry.capital;
-            elements.continentName.textContent = currentCountry.continent;
-            elements.population.textContent = currentCountry.population;
-            elements.countryInfo.classList.add('show');
-
-            // Mark country as learned
-            if (!globalProgress.learnedCountries.some(c => c.name === currentCountry.name)) {
-                globalProgress.learnedCountries.push(currentCountry);
+            function startNextQuiz() {
+                globalProgress.currentQuiz++;
                 saveProgress();
-                updateGlobalProgress();
+                startQuiz();
             }
 
-            elements.nextBtn.style.display = 'inline-block';
-        }
-
-        function endQuiz() {
-            const percentage = Math.round((score / 10) * 100);
-            elements.question.textContent = `Quiz #${globalProgress.currentQuiz} Complete! Score: ${score}/10 (${percentage}%)`;
-            elements.options.style.display = 'none';
-            elements.feedback.style.display = 'none';
-            elements.nextBtn.style.display = 'none';
-            elements.flagEmoji.textContent = score >= 7 ? '🏆' : '📚';
-            elements.countryInfo.classList.remove('show');
-
-            globalProgress.currentQuiz++;
-            saveProgress();
-            updateGlobalProgress();
-
-            if (getUnlearnedCountries().length > 0) {
-                elements.nextQuizBtn.style.display = 'inline-block';
-            } else {
-                showCompletionMessage();
-            }
-            
-            elements.resetBtn.style.display = 'inline-block';
-        }
-
-        function showCompletionMessage() {
-            elements.question.textContent = "🎉 Congratulations! You've learned all 195 countries! 🎉";
-            elements.flagEmoji.textContent = '🌍';
-            elements.nextQuizBtn.style.display = 'none';
-            elements.resetBtn.style.display = 'inline-block';
-            elements.completionBanner.classList.add('show');
-        }
-
-        function startNewQuiz() {
-            currentQuestionIndex = 0;
-            score = 0;
-            currentQuizCountries = [];
-            selectedAnswer = null;
-            elements.currentScore.textContent = '0';
-            elements.startBtn.style.display = 'none';
-            elements.nextQuizBtn.style.display = 'none';
-            elements.resetBtn.style.display = 'none';
-            generateQuestion();
-        }
-
-        function resetProgress() {
-            if (confirm('Are you sure you want to reset all progress? This will clear all learned countries.')) {
-                globalProgress = {learnedCountries: [], currentQuiz: 1};
+            function resetProgress() {
+                globalProgress.learnedCountries = [];
+                globalProgress.currentQuiz = 1;
                 saveProgress();
-                location.reload();
+                updateProgress();
+                startQuiz();
             }
-        }
 
-        // Event listeners
-        document.querySelectorAll('.mode-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                quizMode = btn.dataset.mode;
+            // Mode buttons
+            Array.from(document.querySelectorAll('.mode-btn')).forEach(btn => {
+                btn.addEventListener('click', function() {
+                    Array.from(document.querySelectorAll('.mode-btn')).forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    quizMode = btn.dataset.mode;
+                    startQuiz();
+                });
             });
+
+            // Option buttons
+            Array.from(elements.options.children).forEach((opt, idx) => {
+                opt.addEventListener('click', () => {
+                    handleAnswer(idx);
+                });
+            });
+
+            elements.startBtn.addEventListener('click', startQuiz);
+            elements.nextBtn.addEventListener('click', nextQuestion);
+            elements.nextQuizBtn.addEventListener('click', startNextQuiz);
+            elements.resetBtn.addEventListener('click', resetProgress);
+
+            // Initial UI
+            updateProgress();
+            updateQuizNumber();
+            elements.startBtn.style.display = "inline-block";
+            elements.nextBtn.style.display = "none";
+            elements.nextQuizBtn.style.display = "none";
+            elements.resetBtn.style.display = globalProgress.learnedCountries.length ? "inline-block" : "none";
         });
-
-        elements.startBtn.addEventListener('click', startNewQuiz);
-        elements.nextBtn.addEventListener('click', generateQuestion);
-        elements.nextQuizBtn.addEventListener('click', startNewQuiz);
-        elements.resetBtn.addEventListener('click', resetProgress);
-
-        elements.options.addEventListener('click', (e) => {
-            if (e.target.classList.contains('option')) {
-                selectOption(e.target);
-            }
-        });
-
-        // Initialize
-        updateGlobalProgress();
     </script>
 </body>
 </html>
